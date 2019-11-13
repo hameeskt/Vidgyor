@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vidgyor</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+
+
+<!--    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">-->
+
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+
+  <script src="{% static 'js/jquerry.js' %}"></script>
+
+  <script src="{% static 'js/popper.js' %}"></script>
+
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+<div class="container">
+  <img src="static/img/logo.png" class="mx-auto d-block img-fluid"style="width:40%;">
+</div>
+{%if user.is_authenticated %}
+   <a href="logout" class="btn btn-outline-dark " id="btnlgout" > Log Out</a>
+{% endif %}
+  <div >
+    {% for msg in messages %}
+        <p id="message">{{msg}}</p>
+    {% endfor %}
+  </div>
+  <div class="row">
+    <div class="col-sm-6" id="wel-col-1">
+        <h3 class="new_existing_user">New Here?</h3>
+<!--        <a href="register"> <button type="button" class="btn btn-primary btn-lg signup_login_buttons" id="btn-s_up">Sign Up</button></a>-->
+        <button type="button" class="btn btn-primary btn-lg signup_login_buttons" id="btn-s_up" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
+        </div>
+
+        <!-- The Modal -->
+<div class="modal fade" id="modal_signup">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Register Here</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="register" class="was-validated" method="post">
+         {% csrf_token %}
+    <div class="form-group">
+          <label for="fname">First Name:</label>
+          <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="first_name" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="lname">Last Name:</label>
+          <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="last_name" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="unamereg">Username:</label>
+          <input type="text" class="form-control" id="unamereg" placeholder="Enter username" name="username" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter e-mail" name="email" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="pwdreg">Password:</label>
+          <input type="password" class="form-control" id="pwdreg" placeholder="Enter password" name="password1" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="pwdcnfm">Confirm Password:</label>
+          <input type="password" class="form-control" id="pwdcnfm" placeholder="Enter password again" name="password2" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="col-sm-6" id="wel-col-2">
+        <h3 class="new_existing_user">Already have an Account?</h3>
+<!--       <a href="login"> <button type="button" class="btn btn-primary btn-lg signup_login_buttons" id="btn-l_in">Log In</button></a>-->
+        <button type="button" class="btn btn-primary btn-lg signup_login_buttons" id="btn-l_in" data-toggle="modal" data-target="#modal_login">Log In</button>
+    </div>
+
+
+          <div class="modal fade" id="modal_login">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Login here</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="login" class="was-validated" method="post">
+         {% csrf_token %}
+
+        <div class="form-group">
+          <label for="unamereg">Username:</label>
+          <input type="text" class="form-control" id="unamelog" placeholder="Enter username" name="username" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="pwdreg">Password:</label>
+          <input type="password" class="form-control" id="pwdlog" placeholder="Enter password" name="password1" required>
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+  </div>
+</div>
+</div>
+</body>
+</html>

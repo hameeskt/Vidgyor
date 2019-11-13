@@ -1,0 +1,64 @@
+#wel-col-1 {
+background-color:#4d4d4d;
+}
+#wel-col-2 {
+background-color:#008CBA;
+}
+
+
+.new_existing_user{
+text-align:center;
+padding-top:40px;
+letter-spacing: 2px;
+color: white;
+}
+
+.signup_login_buttons{
+  width: 90%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 30px 30px;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+#btn-s_up{
+  background-color: transparent;
+  color: white;
+  border: 2px solid #008CBA;
+}
+#btn-s_up:hover {
+  background-color: #008CBA;
+  color: white;
+  border: 2px solid white;
+}
+
+#btn-l_in{
+  background-color: transparent;
+  color: white;
+  border: 2px solid #4d4d4d;
+}
+#btn-l_in:hover {
+  background-color: #4d4d4d;
+  color: white;
+  border: 2px solid white;
+}
+
+
+#message {
+    text-align: center;
+    color: crimson;
+    border: 2px solid #8c7272;
+    border-radius: 40px;
+    width: 80%;
+    margin-left: 10%;
+    font-size: 20px;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+#success {
+border: 3px solid red;
+}
