@@ -36,10 +36,10 @@ def reg(request):
 
 def log(request):
     if request.method == 'POST':
-        email= request.POST['email']
-        password= request.POST['password']
+        username= request.POST['username']
+        password= request.POST['password1']
 
-        user = auth.authenticate(email=email,password=password)
+        user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)
             messages.info(request,'success')
