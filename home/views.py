@@ -43,7 +43,7 @@ def log(request):
         if user is not None:
             auth.login(request,user)
             messages.info(request,'success')
-            return render(request,'home.html')
+            return redirect('/')
         else:
             messages.info(request,'Username or Password Incorrect :(')
             return redirect('/')
