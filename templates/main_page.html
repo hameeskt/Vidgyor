@@ -29,7 +29,17 @@ $("#mytable #checkall").click(function () {
 
     $("[data-toggle=tooltip]").tooltip();
 });
+</script>
 
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>
 </head>
 <body>
@@ -56,21 +66,11 @@ $("#mytable #checkall").click(function () {
 
 
 <div class="jumbotron jumbotron-fluid" style="height:20px;">
-  <div class="container">
-       <div class="btn-group">
-    <button type="button" class="btn btn-success">Apple</button>
-    <button type="button" class="btn btn-primary">Samsung</button>
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      Sony
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Tablet</a>
-        <a class="dropdown-item" href="#">Smartphone</a>
-      </div>
+
+    <div>
+    <input  id="myInput" type="text" placeholder="Search">
     </div>
-  </div>
-  </div>
+
 </div>
 
 
@@ -82,7 +82,7 @@ $("#mytable #checkall").click(function () {
         <div class="table-responsive">
 
 
-              <table id="mytable" class="table table-bordred table-striped">
+              <table id="mytable1" class="table table-bordred table-striped">
 
                    <thead>
                    <th><input type="checkbox" id="checkall" /></th>
@@ -96,7 +96,7 @@ $("#mytable #checkall").click(function () {
                       <th>Uploaded_by</th>
                        <th>status</th>
                    </thead>
-    <tbody>
+    <tbody id="myTable">
      {% for vid in videos %}
         <tr>
         <td><input type="checkbox" class="checkthis" /></td>
