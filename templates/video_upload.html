@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel_image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+
+    <script src="{% static 'js/jquerry.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+    <form method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form1.as_p }}
+        <a href="add_category"> <button type="button" class="btn btn-primary" >Add New Category</button></a>
+        <a href="add_tag"> <button type="button" class="btn btn-primary" >Add New tag</button> </a><br>
+
+        <button type="submit" class="btn btn-success">Upload</button>
+    </form>
+
+</body>
+</html>

@@ -1,9 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
+from .forms import *
+from django.http import HttpResponse
+from django.views.generic import UpdateView
+from django.shortcuts import get_object_or_404
 # Create your views here.
 def home(request):
-    return render(request, 'welcome.html')
+    if request.user.is_authenticated:
+        count = Video.objects.count()
+        videos = Video.objects.all()
+        return render(request, 'main_page.html',{'videos' : videos, 'count': count})
+    else:
+        return redirect('login')
 
 def reg(request):
     if request.method == 'POST':
@@ -36,22 +45,75 @@ def reg(request):
 
 def log(request):
     if request.method == 'POST':
-        email= request.POST['email']
-        password= request.POST['password']
+        username= request.POST['username']
+        password= request.POST['password1']
 
-        user = auth.authenticate(email=email,password=password)
+        user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)
             messages.info(request,'success')
-            return render(request,'home.html')
+            return redirect('/')
         else:
             messages.info(request,'Username or Password Incorrect :(')
-            return redirect('/')
+            return redirect('login')
     else:
-        return render(request,'log.html')
+        return render(request,'welcome.html')
     # return render(request,'log.html')
 
 
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+# def video_upload(request):
+#     return render(request,'video_upload.html')
+def add_tag(request):
+    if request.method== 'POST':
+        tag_form = TagsForm(request.POST, request.FILES)
+
+        if tag_form.is_valid():
+            tag_form.save()
+            return redirect('video_upload')
+    else:
+        tag_form = TagsForm()
+        return render(request,'add_tag.html', {'tag_form' : tag_form})
+
+def add_category(request):
+    if request.method== 'POST':
+        form = CategoryForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('video_upload')
+
+    else:
+        form = CategoryForm()
+        return render(request,'add_category.html', {'form' : form})
+
+
+def video_upload(request):
+    if request.method == 'POST':
+        form1 = VideoForm(request.POST, request.FILES)
+
+        if form1.is_valid():
+            form1.save()
+        return redirect('success')
+    else:
+        form1 = VideoForm()
+    return render(request, 'video_upload.html', {'form1': form1})
+
+
+def success(request):
+    return HttpResponse('successfuly uploaded')
+
+def details(request,id):
+    vi= Video.objects.get(id=id)
+    video = get_object_or_404(Video, id=id)
+    if request.method == "POST":
+        form = VideoEditForm(request.POST, instance=video)
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = VideoEditForm(instance=video)
+    return render(request,'details.html',{'vi':vi, 'form':form})

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title>{{vi.title}}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+      <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+      <script src="{% static 'js/jquerry.js' %}"></script>
+      <script src="{% static 'js/popper.js' %}"></script>
+      <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm" style="background-color:lavender;">{{vi.title}}
+        <video width="700" height="280" controls>
+        <source src="{{vi.video_file.url}}" type="video/mp4">
+        <source src="movie.ogg" type="video/ogg">
+        Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="col-sm" style="background-color:lavenderblush;">{{vi.category}}
+    <form method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-success">Upload</button>
+    </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

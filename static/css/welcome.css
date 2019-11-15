@@ -62,3 +62,7 @@ color: white;
 #success {
 border: 3px solid red;
 }
+
+
+ #btnsnup {  background-color: white;color: black;border: 2px solid #555555;width:200px; height:40px;padding: 10px;border-radius: 15px;}
+    #btnsnup:hover {  background-color: #555555;color: white;}
