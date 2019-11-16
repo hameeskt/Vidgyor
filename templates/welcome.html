@@ -1,26 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Vidgyor</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base.html"%}
 
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-      <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+{% block content %}
 
-
-<!--    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">-->
-
-    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
-
-  <script src="{% static 'js/jquerry.js' %}"></script>
-
-  <script src="{% static 'js/popper.js' %}"></script>
-
-  <script src="{% static 'js/bootstrap.js' %}"></script>
-</head>
-<body>
 <div class="container">
   <img src="static/img/logo.png" class="mx-auto d-block img-fluid"style="width:40%;">
 </div>
@@ -161,5 +142,6 @@
   </div>
 </div>
 </div>
-</body>
-</html>
+
+
+{% endblock %}
