@@ -1,5 +1,5 @@
 {% extends "base.html"%}
-
+<title>{% block title %}Home{% endblock %}</title>
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -36,9 +36,9 @@
      <div class="col-md-2">
 
          <div class="jumbotron" style="width: auto;">
-             <h6>Videos</h6><br>
-             <h6>Playlists</h6><br>
-             <h6>Categories</h6><br>
+<!--             <h6>Videos</h6><br>-->
+<!--             <h6>Playlists</h6><br>-->
+<!--             <h6>Categories</h6><br>-->
 
          </div>
 
@@ -48,9 +48,9 @@
         <div class="table-responsive">
 
 
-              <table id="mytable1" class="table table-bordred table-striped">
+              <table id="mytable1" class="table table-bordred table-hover">
 
-                   <thead>
+                   <thead class=" thead-dark" >
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Thumbnail</th>
                     <th>Name</th>
@@ -61,7 +61,7 @@
                       <th>Duration</th>
                       <th>Uploaded_by</th>
                        <th>status</th>
-                   </thead>
+                   </theadthead-dark>
     <tbody id="myTable">
     {% for video in filter.qs %}
         <tr>
