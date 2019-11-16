@@ -5,14 +5,26 @@ from .forms import *
 from django.http import HttpResponse
 from django.views.generic import UpdateView
 from django.shortcuts import get_object_or_404
+from .filter import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 def home(request):
     if request.user.is_authenticated:
-        count = Video.objects.count()
         videos = Video.objects.all()
-        return render(request, 'main_page.html',{'videos' : videos, 'count': count})
+        count = Video.objects.count()
+        video_filter = VideoFilter(request.GET, queryset=videos)
+
+
+
+
+        return render(request, 'main_page.html',{'videos' : videos, 'count': count,'filter': video_filter,})
     else:
         return redirect('login')
+
+# def search(request):
+#     video_list = Video.objects.all()
+#     video_filter = VideoFilter(request.GET, queryset=video_list)
+#     return render(request, 'search.html', {'filter': video_filter})
 
 def reg(request):
     if request.method == 'POST':

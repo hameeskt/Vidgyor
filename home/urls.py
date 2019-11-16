@@ -11,5 +11,6 @@ urlpatterns = [
     path('add_tag', views.add_tag, name='tag_upload'),
     path('success', views.success, name='success'),
     path('details/<int:id>/', views.details, name='details'),
+    # path('search', views.search, name='search'),
 
 ]
