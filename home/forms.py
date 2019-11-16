@@ -21,5 +21,5 @@ class VideoForm(forms.ModelForm):
 class VideoEditForm(VideoForm):
     class Meta:
         model = Video
-        fields = ['title', 'type', 'category']
+        fields = ['title','desc','tag' ,'type', 'category']
 

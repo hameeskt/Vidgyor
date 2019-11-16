@@ -32,7 +32,7 @@ class Video(models.Model):
     status = models.CharField(max_length=10,choices=VIDEO_STATUS, default='ready')
     duration = models.FloatField(default=0.0)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
-    uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    uploaded_by = models.CharField(max_length=30, default=User,)
 
     def __str__(self):
         return self.title

@@ -109,7 +109,7 @@ def video_upload(request):
 
         if form1.is_valid():
             form1.save()
-        return redirect('success')
+        return redirect('home')
     else:
         form1 = VideoForm()
     return render(request, 'video_upload.html', {'form1': form1})
@@ -125,7 +125,7 @@ def details(request,id):
         form = VideoEditForm(request.POST, instance=video)
         if form.is_valid():
             form.save()
-            return redirect('success')
+            return redirect('/')
     else:
         form = VideoEditForm(instance=video)
     return render(request,'details.html',{'vi':vi, 'form':form})

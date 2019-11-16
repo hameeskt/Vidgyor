@@ -166,3 +166,28 @@ padding :10px;
     border-radius: 0px;
 
 }
+
+
+
+
+
+
+
+#video {
+  width: 100%;
+  height: auto;
+}
+#changebutton {
+color: #484545;
+    font-size: large;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-color: #ff0055;
+    padding: 10px 30px 10px 30px;
+    width: -webkit-fill-available;
+    margin-top: 20px;
+    margin-bottom :10px;
+}
+#about{
+text-decoration: underline;
+}

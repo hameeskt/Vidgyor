@@ -1,37 +1,31 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <title>{{vi.title}}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-      <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
-      <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
-      <script src="{% static 'js/jquerry.js' %}"></script>
-      <script src="{% static 'js/popper.js' %}"></script>
-      <script src="{% static 'js/bootstrap.js' %}"></script>
-</head>
-<body>
+{% extends "base.html"%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm" style="background-color:lavender;">{{vi.title}}
-        <video width="700" height="280" controls>
+    <div class="col" style="background-color:lavender;">
+        <video width="400" controls id="video">
         <source src="{{vi.video_file.url}}" type="video/mp4">
         <source src="movie.ogg" type="video/ogg">
-        Your browser does not support the video tag.
         </video>
+
+        <h4 id="about">About this video</h4>
+        <p>Duration :{{vi.duration}}</p>
+        <p>Uploaded time :{{vi.created_on}}</p>
+        <p>Uploaded by :{{vi.uploaded_by}}</p>
+
     </div>
-    <div class="col-sm" style="background-color:lavenderblush;">{{vi.category}}
+    <div class="col-sm" style="background-color:lavenderblush;">
     <form method = "post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
 
-        <button type="submit" class="btn btn-success">Upload</button>
+        <button type="submit" id="changebutton" class="btn btn-success" >Change</button>
     </form>
     </div>
   </div>
 </div>
 
-</body>
-</html>
+{% endblock %}
