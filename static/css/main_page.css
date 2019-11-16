@@ -1,0 +1,38 @@
+#navbar{
+background-color: blueviolet;
+}
+
+.main_buttons{
+ padding: 10px 20px;
+ border-radius: 0px;
+ float: right;
+}
+
+#create_video{
+background-color: blueviolet;
+border-color: blueviolet;
+}
+
+#filterbutton{
+    margin-right: 10px;
+    width: 150px;
+    background-color: #ffffff00e;
+  color: blueviolet;
+  border: 2px solid blueviolet;
+}
+#filterbutton:hover {
+background-color: blueviolet;
+color: white;
+}
+
+#myInput{
+padding: 10px 20px;
+    height: 49px;
+    float: right;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+#count {
+padding :10px;
+}
